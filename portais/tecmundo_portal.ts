@@ -10,6 +10,10 @@ class TecMundoPortal extends GenericPortal {
   get_title(article: any) {
     return article.querySelector("h4.tec--card__title")?.text ?? "";
   }
+
+  get_data(article: any) {
+    return article.querySelector("div.tec--timestamp__item")?.text ?? "";
+  }
 }
 
 export default TecMundoPortal;

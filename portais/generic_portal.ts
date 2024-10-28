@@ -42,7 +42,7 @@ class GenericPortal {
     this.noticias = this.articles.map((article: any) => {
       return {
         titulo: this.get_title(article),
-        data: "",
+        data: this.get_date(article),
         fonte: "",
         imagem: "",
         url: "",
@@ -58,6 +58,10 @@ class GenericPortal {
   }
 
   get_title(_article: any): string {
+    return "";
+  }
+
+  get_date(_article: any): string {
     return "";
   }
 }
