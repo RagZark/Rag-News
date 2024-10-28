@@ -26,6 +26,10 @@ class TecMundoPortal extends GenericPortal {
         ?.getAttribute("data-src") ?? ""
     );
   }
+
+  get_urlPortal(article: any): string {
+    return article.querySelector("figure>a")?.getAttribute("href") ?? "";
+  }
 }
 
 export default TecMundoPortal;
