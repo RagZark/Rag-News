@@ -32,8 +32,6 @@ const noticiasTecMundo = async () => {
   });
 };
 
-//noticiasTecMundo();
-
 const portal = new TecMundoPortal();
 
 portal.process().then((articles) => {

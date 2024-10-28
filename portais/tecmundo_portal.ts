@@ -1,6 +1,6 @@
 import GenericPortal from "./generic_portal";
 
-class TecMundoPortal extends GenericPortal {
+class TecMundoPortal extends GenericPortal implements PortalInterface {
   constructor() {
     super();
     this.set_url("https://www.tecmundo.com.br/novidades");
@@ -27,7 +27,7 @@ class TecMundoPortal extends GenericPortal {
     );
   }
 
-  get_urlPortal(article: any): string {
+  get_url_news(article: any): string {
     return article.querySelector("figure>a")?.getAttribute("href") ?? "";
   }
 }

@@ -9,7 +9,7 @@ interface Noticia {
   url: string;
 }
 
-class GenericPortal {
+class GenericPortal implements PortalInterface {
   private url_noticias!: string;
   private noticias!: Noticia[];
   private articles_query!: string;
@@ -45,7 +45,7 @@ class GenericPortal {
         data: this.get_date(article),
         fonte: this.get_font(article),
         imagem: this.get_image(article),
-        url: this.get_urlPortal(article),
+        url: this.get_url_news(article),
       };
     });
     return this.noticias;
@@ -55,6 +55,10 @@ class GenericPortal {
     await this.load_articles();
     this.load_noticias();
     return this.noticias;
+  }
+
+  get_from_html(elm: any, query: string, attribute: string): string {
+    return elm.querySelector(query)?.getAttribute(attribute) ?? "";
   }
 
   get_title(_article: any): string {
@@ -73,7 +77,7 @@ class GenericPortal {
     return "";
   }
 
-  get_urlPortal(_article: any): string {
+  get_url_news(_article: any): string {
     return "";
   }
 }
