@@ -43,7 +43,7 @@ class GenericPortal {
       return {
         titulo: this.get_title(article),
         data: this.get_date(article),
-        fonte: "",
+        fonte: this.get_font(article),
         imagem: "",
         url: "",
       };
@@ -62,6 +62,10 @@ class GenericPortal {
   }
 
   get_date(_article: any): string {
+    return "";
+  }
+
+  get_font(_article: any): string {
     return "";
   }
 }

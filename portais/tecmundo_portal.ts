@@ -11,8 +11,12 @@ class TecMundoPortal extends GenericPortal {
     return article.querySelector("h4.tec--card__title")?.text ?? "";
   }
 
-  get_data(article: any) {
+  get_date(article: any) {
     return article.querySelector("div.tec--timestamp__item")?.text ?? "";
+  }
+
+  get_font(article: any) {
+    return article.querySelector("div>a")?.text ?? "";
   }
 }
 
