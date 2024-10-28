@@ -18,6 +18,14 @@ class TecMundoPortal extends GenericPortal {
   get_font(article: any) {
     return article.querySelector("div>a")?.text ?? "";
   }
+
+  get_image(article: any): string {
+    return (
+      article
+        .querySelector(".tec--card__thumb__image")
+        ?.getAttribute("data-src") ?? ""
+    );
+  }
 }
 
 export default TecMundoPortal;
