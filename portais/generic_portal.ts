@@ -66,7 +66,7 @@ class GenericPortal implements PortalInterface {
     } else {
       response = loadelm?.getAttribute(attribute) ?? "";
     }
-
+    response = response.trim();
     return response;
   }
 
