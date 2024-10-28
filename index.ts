@@ -1,6 +1,7 @@
 import axios from "axios";
 import parse from "node-html-parser";
 import TecMundoPortal from "./portais/tecmundo_portal";
+import UolPortal from "./portais/uol_portal";
 
 interface Noticia {
   fonte: string;
@@ -32,7 +33,7 @@ const noticiasTecMundo = async () => {
   });
 };
 
-const portal = new TecMundoPortal();
+const portal = new UolPortal();
 
 portal.process().then((articles) => {
   console.log(articles);

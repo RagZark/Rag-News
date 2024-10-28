@@ -10,11 +10,22 @@ interface Noticia {
   url: string;
 }
 
+interface ToQuery {
+  query: string;
+  attribute: string;
+}
+
 class GenericPortal implements PortalInterface {
   private url_noticias!: string;
   private noticias!: Noticia[];
   private articles_query!: string;
   private articles!: [any];
+
+  protected titleToQuery!: ToQuery;
+  protected dateToQuery!: ToQuery;
+  protected fontToQuery!: ToQuery;
+  protected imageToQuery!: ToQuery;
+  protected urlToQuery!: ToQuery;
 
   constructor() {}
 
@@ -42,11 +53,11 @@ class GenericPortal implements PortalInterface {
   load_noticias() {
     this.noticias = this.articles.map((article: any) => {
       return {
-        titulo: this.get_title(article),
-        data: this.get_date(article),
-        fonte: this.get_font(article),
-        imagem: this.get_image(article),
-        url: this.get_url_news(article),
+        titulo: this.get_from_html(article, this.titleToQuery),
+        data: this.get_from_html(article, this.dateToQuery),
+        fonte: this.get_from_html(article, this.fontToQuery),
+        imagem: this.get_from_html(article, this.imageToQuery),
+        url: this.get_from_html(article, this.urlToQuery),
       };
     });
     return this.noticias;
@@ -58,36 +69,32 @@ class GenericPortal implements PortalInterface {
     return this.noticias;
   }
 
-  get_from_html(elm: any, query: string, attribute: string): string {
+  get_from_html(elm: any, toQuery: ToQuery): string {
     let response: string;
-    const loadelm = elm.querySelector(query);
-    if (attribute === "text") {
+    const loadelm = elm.querySelector(toQuery.query);
+    if (toQuery.attribute === "text") {
       response = loadelm?.text ?? "";
     } else {
-      response = loadelm?.getAttribute(attribute) ?? "";
+      response = loadelm?.getAttribute(toQuery.attribute) ?? "";
     }
     response = response.trim();
     return response;
   }
 
-  get_title(_article: any): string {
-    return "";
+  set_title(title: ToQuery) {
+    this.titleToQuery = title;
   }
-
-  get_date(_article: any): string {
-    return "";
+  set_date(date: ToQuery) {
+    this.dateToQuery = date;
   }
-
-  get_font(_article: any): string {
-    return "";
+  set_font(font: ToQuery) {
+    this.fontToQuery = font;
   }
-
-  get_image(_article: any): string {
-    return "";
+  set_image(image: ToQuery) {
+    this.imageToQuery = image;
   }
-
-  get_url_news(_article: any): string {
-    return "";
+  set_url_new(url: ToQuery) {
+    this.urlToQuery = url;
   }
 }
 
