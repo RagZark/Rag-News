@@ -10,10 +10,12 @@ interface Noticia {
   url: string;
 }
 
-interface ToQuery {
+interface ToQueryInterface {
   query: string;
   attribute: string;
 }
+
+type ToQuery = ToQueryInterface | String | false;
 
 class GenericPortal implements PortalInterface {
   private url_noticias!: string;
@@ -70,6 +72,14 @@ class GenericPortal implements PortalInterface {
   }
 
   get_from_html(elm: any, toQuery: ToQuery): string {
+    if (!toQuery) {
+      return "Sem Imagem";
+    }
+
+    if (typeof toQuery === "string" || toQuery instanceof String) {
+      return toQuery.toString();
+    }
+
     let response: string;
     const loadelm = elm.querySelector(toQuery.query);
     if (toQuery.attribute === "text") {

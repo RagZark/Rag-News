@@ -15,14 +15,8 @@ class UolPortal extends GenericPortal implements PortalInterface {
       query: "time.thumb-date",
       attribute: "text",
     });
-    this.set_font({
-      query: "div>a",
-      attribute: "text",
-    });
-    this.set_image({
-      query: ".tec--card__thumb__image",
-      attribute: "data-src",
-    });
+    this.set_font("UOL");
+    this.set_image(false);
     this.set_url_new({
       query: "a",
       attribute: "href",
