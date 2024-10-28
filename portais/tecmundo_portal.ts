@@ -1,4 +1,5 @@
 import GenericPortal from "./generic_portal";
+import PortalInterface from "../interfaces/portal_interface";
 
 class TecMundoPortal extends GenericPortal implements PortalInterface {
   constructor() {
@@ -8,27 +9,23 @@ class TecMundoPortal extends GenericPortal implements PortalInterface {
   }
 
   get_title(article: any) {
-    return article.querySelector("h4.tec--card__title")?.text ?? "";
+    return this.get_from_html(article, "h4.tec--card__title", "text");
   }
 
   get_date(article: any) {
-    return article.querySelector("div.tec--timestamp__item")?.text ?? "";
+    return this.get_from_html(article, "div.tec--timestamp__item", "text");
   }
 
   get_font(article: any) {
-    return article.querySelector("div>a")?.text ?? "";
+    return this.get_from_html(article, "div>a", "text");
   }
 
   get_image(article: any): string {
-    return (
-      article
-        .querySelector(".tec--card__thumb__image")
-        ?.getAttribute("data-src") ?? ""
-    );
+    return this.get_from_html(article, ".tec--card__thumb__image", "data-src");
   }
 
   get_url_news(article: any): string {
-    return article.querySelector("figure>a")?.getAttribute("href") ?? "";
+    return this.get_from_html(article, "figure>a", "href");
   }
 }
 

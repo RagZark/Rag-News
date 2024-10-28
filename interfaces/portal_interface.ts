@@ -5,3 +5,5 @@ interface PortalInterface {
   get_image(article: any): string;
   get_url_news(article: any): string;
 }
+
+export default PortalInterface;

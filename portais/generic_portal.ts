@@ -1,5 +1,6 @@
 import axios from "axios";
 import parse from "node-html-parser";
+import PortalInterface from "../interfaces/portal_interface";
 
 interface Noticia {
   fonte: string;
@@ -58,7 +59,15 @@ class GenericPortal implements PortalInterface {
   }
 
   get_from_html(elm: any, query: string, attribute: string): string {
-    return elm.querySelector(query)?.getAttribute(attribute) ?? "";
+    let response: string;
+    const loadelm = elm.querySelector(query);
+    if (attribute === "text") {
+      response = loadelm?.text ?? "";
+    } else {
+      response = loadelm?.getAttribute(attribute) ?? "";
+    }
+
+    return response;
   }
 
   get_title(_article: any): string {
