@@ -36,6 +36,6 @@ const noticiasTecMundo = async () => {
 
 const portal = new TecMundoPortal();
 
-portal.load_articles().then((articles) => {
+portal.process().then((articles) => {
   console.log(articles);
 });
