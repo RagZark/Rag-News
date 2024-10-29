@@ -1,6 +1,6 @@
-import UolPortal from "./portais/uol_portal";
+import TerraPortal from "./portais/terra_portal";
 
-const portal = new UolPortal();
+const portal = new TerraPortal();
 
 portal.process().then((articles) => {
   console.log(articles);
