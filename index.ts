@@ -1,7 +1,9 @@
-import G1Portal from "./portais/g1_portal";
+import ServiceReadAll from "./services/read_all";
 
-const portal = new G1Portal();
+let cron = require("node-cron");
 
-portal.process().then((articles) => {
-  console.log(articles);
+const serviceReadAll = new ServiceReadAll();
+
+cron.schedule("* * * * *", () => {
+  serviceReadAll.execute();
 });
