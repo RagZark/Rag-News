@@ -12,7 +12,7 @@ class TerraPortal extends GenericPortal implements PortalInterface {
       attribute: "text",
     });
     this.set_date("Não especificada");
-    this.set_font("Nunito Sans");
+    this.set_source("Terra");
     this.set_image({
       query: ".card-news__image>a>img",
       attribute: "src",

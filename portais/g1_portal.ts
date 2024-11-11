@@ -15,7 +15,7 @@ class G1Portal extends GenericPortal implements PortalInterface {
       query: "div.feed-post-metadata",
       attribute: "text",
     });
-    this.set_font("Não definida ainda");
+    this.set_source("Não definida ainda");
     this.set_image({
       query: ".bstn-fd-picture-image",
       attribute: "src",

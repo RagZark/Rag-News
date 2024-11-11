@@ -15,7 +15,7 @@ class TecMundoPortal extends GenericPortal implements PortalInterface {
       query: "div.tec--timestamp__item",
       attribute: "text",
     });
-    this.set_font({
+    this.set_source({
       query: "div>a",
       attribute: "text",
     });

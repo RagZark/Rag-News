@@ -25,7 +25,7 @@ class GenericPortal implements PortalInterface {
 
   protected titleToQuery!: ToQuery;
   protected dateToQuery!: ToQuery;
-  protected fontToQuery!: ToQuery;
+  protected sourceToQuery!: ToQuery;
   protected imageToQuery!: ToQuery;
   protected urlToQuery!: ToQuery;
 
@@ -57,7 +57,7 @@ class GenericPortal implements PortalInterface {
       return {
         titulo: this.get_from_html(article, this.titleToQuery),
         data: this.get_from_html(article, this.dateToQuery),
-        fonte: this.get_from_html(article, this.fontToQuery),
+        fonte: this.get_from_html(article, this.sourceToQuery),
         imagem: this.get_from_html(article, this.imageToQuery),
         url: this.get_from_html(article, this.urlToQuery),
       };
@@ -65,7 +65,7 @@ class GenericPortal implements PortalInterface {
     return this.noticias;
   }
 
-  async process() {
+  async execute() {
     await this.load_articles();
     this.load_noticias();
     return this.noticias;
@@ -97,8 +97,8 @@ class GenericPortal implements PortalInterface {
   set_date(date: ToQuery) {
     this.dateToQuery = date;
   }
-  set_font(font: ToQuery) {
-    this.fontToQuery = font;
+  set_source(source: ToQuery) {
+    this.sourceToQuery = source;
   }
   set_image(image: ToQuery) {
     this.imageToQuery = image;
